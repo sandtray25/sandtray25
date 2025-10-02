@@ -32,7 +32,7 @@ export default function LoginPage() {
   );
 }
 
-export function LoginFormWithGradient() {
+function LoginFormWithGradient() {
   const router = useRouter();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,7 +86,7 @@ export function LoginFormWithGradient() {
   );
 }
 
-export const LogoSVG = (props: React.SVGProps<SVGSVGElement>) => {
+const LogoSVG = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -97,7 +97,7 @@ export const LogoSVG = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export const Logo = () => {
+const Logo = () => {
   return (
     <a href="/" className="flex items-center gap-2">
       <LogoSVG />
@@ -106,7 +106,7 @@ export const Logo = () => {
   );
 };
 
-export const Container = ({
+const Container = ({
   className,
   children,
   ...props
@@ -122,7 +122,7 @@ export const Container = ({
   );
 };
 
-export const Heading = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const Heading = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <h1 className={cn("text-center text-3xl font-medium tracking-tight text-black md:text-4xl lg:text-6xl dark:text-white", className)}>
       {children}
@@ -130,7 +130,7 @@ export const Heading = ({ children, className }: { children: React.ReactNode; cl
   );
 };
 
-export const SubHeading = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const SubHeading = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <h2 className={cn("text-center text-sm font-medium tracking-tight text-gray-600 md:text-sm lg:text-base dark:text-gray-300", className)}>
       {children}
@@ -138,7 +138,7 @@ export const SubHeading = ({ children, className }: { children: React.ReactNode;
   );
 };
 
-export const Label = ({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) => {
+const Label = ({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) => {
   return (
     <LabelPrimitive.Root
       data-slot="label"
@@ -170,7 +170,7 @@ const CustomInput = ({ className, type, ...props }: React.ComponentProps<"input"
 
 // Button 컴포넌트는 공용 컴포넌트(components/button.tsx)를 사용합니다.
 
-export const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => {
+const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_389_3626)">
@@ -188,7 +188,7 @@ export const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => {
+const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_389_3636)">
@@ -209,7 +209,7 @@ export const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => {
+const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_389_3652)">
@@ -224,7 +224,7 @@ export const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export const AuthIllustration = () => {
+const AuthIllustration = () => {
   return (
     <div className="relative min-h-80 w-full overflow-hidden rounded-2xl">
       <Image
@@ -258,7 +258,7 @@ function resolveCssColorToRGB(color: string): [number, number, number] {
   return [parseInt(match[1], 10), parseInt(match[2], 10), parseInt(match[3], 10)];
 }
 
-export const MeshGradient: React.FC<MeshGradientProps> = ({
+const MeshGradient: React.FC<MeshGradientProps> = ({
   className,
   colors = ["var(--color-orange-500)", "#2762E7", "#3ECF8E", "#FFB86B"],
   speed = 1,
