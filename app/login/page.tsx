@@ -50,7 +50,7 @@ export function LoginFormWithGradient() {
           <form className="mt-6 flex flex-col gap-8" onSubmit={handleSubmit}>
             <div className="h-full w-full rounded-2xl">
               <Label>이메일</Label>
-              <Input
+              <CustomInput
                 type="email"
                 className="mt-4 border-none focus:ring-gray-300"
                 placeholder="you@example.com"
@@ -58,7 +58,7 @@ export function LoginFormWithGradient() {
             </div>
             <div className="h-full w-full rounded-2xl">
               <Label>비밀번호</Label>
-              <Input
+              <CustomInput
                 type="password"
                 className="mt-4 border-none focus:ring-gray-300"
                 placeholder="비밀번호를 입력하세요"
@@ -151,7 +151,7 @@ export const Label = ({ className, ...props }: React.ComponentProps<typeof Label
   );
 };
 
-export const Input = ({ className, type, ...props }: React.ComponentProps<"input">) => {
+const CustomInput = ({ className, type, ...props }: React.ComponentProps<"input">) => {
   return (
     <input
       type={type}
