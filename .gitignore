@@ -99,3 +99,8 @@ jspm_packages/
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Upload scripts and temporary files
+upload-to-r2*.js
+test-download.*
+.vercel
