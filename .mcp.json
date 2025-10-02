@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase",
+        "--project-ref=YOUR_PROJECT_REF",
+        "--allow-writes",
+        "--allow-deletes",
+        "--allow-table-creation",
+        "--allow-schema-changes",
+        "--enable-sql-execution"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN",
+        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF",
+        "SUPABASE_URL": "YOUR_SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY": "YOUR_SERVICE_ROLE_KEY",
+        "SUPABASE_DB_PASSWORD": "",
+        "SUPABASE_ENABLE_RLS": "false",
+        "SUPABASE_ANON_KEY": "YOUR_ANON_KEY"
+      }
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    },
+    "cloudflare-observability": {
+      "url": "https://observability.mcp.cloudflare.com/sse"
+    },
+    "cloudflare-workers-bindings": {
+      "url": "https://bindings.mcp.cloudflare.com/sse"
+    }
+  }
+}

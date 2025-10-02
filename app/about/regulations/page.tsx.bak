@@ -1,0 +1,681 @@
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Footer } from "@/components/footer";
+import { EthicsContent } from "./EthicsContent";
+import { ResearchEthicsContent } from "./ResearchEthicsContent";
+
+// 자격규정 콘텐츠 (r3.pdf - 19페이지)
+function QualificationContent() {
+  return (
+    <div className="prose prose-gray max-w-none space-y-8" style={{ fontFamily: 'Noto Sans KR, sans-serif' }}>
+      {/* 서문 */}
+      <section className="mb-8 p-6 bg-gray-50 rounded-lg">
+        <h4 className="text-2xl font-bold mb-4 text-gray-800">서문</h4>
+        <p className="leading-relaxed text-gray-700 text-base">
+          한국모래상자치료학회는 회원들이 모든 아동 및 가족들의 존엄성과 잠재능력을 존중하고, 다양한 전문적 원조 활동을 통해 아동 및 가족들의 삶의 질을 향상시킬 수 있도록 돕는데 헌신한다. 본 학회의 회원들인 모래상자상담사(모래상자상담사 2급, 모래상자상담사 1급, 모래상자치료 전문가, 모래상자치료 슈퍼바이저, 모래상자치료 교육분석가)는 도움이 필요한 아동과 가족들을 위해 전문적 지식과 기술을 개발하고, 전문가로서의 능력과 자질을 향상시키며, 내담자들의 복지를 최우선 순위에 둔다. 모래상자상담사는 내담자들을 위해 항상 최상의 정신건강 서비스를 제공하기 위한 모든 준비와 노력을 기울여야 한다. 한국모래상자치료학회 회원들은 주된 개입양식인 모래상자치료를 제공함에 있어서 모래상자상담사로서 활동하기에 적합한 최대한의 전문적 준비를 해야 한다.
+        </p>
+      </section>
+
+      {/* Ⅰ. 태도 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">Ⅰ. 태도</h4>
+        <p className="mb-6 text-gray-700">전문가로서의 태도는 모래상자상담사로서 기본적으로 취해야 할 전반적인 태도들 및 지향되어야 할 행동들에 관한 내용들을 포함한다.</p>
+
+        <div className="space-y-6">
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">1. 전문적 능력</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 능력의 경계</p>
+                <p className="text-gray-700">모래상자상담사는 자신의 능력의 경계 내에서만 실무를 해야 한다. 능력은 정규 교육, 실습 및 훈련, 슈퍼비전 받은 상담 경험, 학회의 자격 취득, 그리고 그 외의 전문적 경험 등에 기반을 두어야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 전문성 향상(증진)</p>
+                <p className="text-gray-700">모래상자상담사는 적절한 교육, 훈련, 그리고, 슈퍼비전 받은 상담 경험을 쌓아 전문성을 반드시 향상시켜야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 자격의 명시</p>
+                <p className="text-gray-700">모래상자상담사는 자신이 가진 능력 이상의 것을 주장하거나 암시해서는 안 되며, 타인에 의해 능력이나 자격이 오도 되었을 때에는 수정해야 할 의무가 있다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(4) 지속적인 교육과 연수</p>
+                <p className="text-gray-700">모래상자상담사는 자신의 활동분야에 있어서 최신의 과학적이고 전문적인 정보와 지식을 유지하기 위해 지속적인 교육과 연수의 필요성을 인식하고 참여해야한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(5) 자기반성과 평가</p>
+                <p className="text-gray-700">모래상자상담사는 정기적으로 전문인으로서의 능력과 효율성에 대한 자기반성과 평가를 해야 하며, 자신의 효율성을 증진시키기 위해 지도감독을 받을 책무가 있다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(6) 윤리 규정의 준수</p>
+                <p className="text-gray-700">모래상자상담사는 윤리강령과 시행세칙을 준수할 책임이 있다. 모래상자상담사는 윤리적 책임이나 전문적 실무에 관한 의문점들에 대해 지식과 경험이 풍부한 전문가의 의견을 들어야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(7) 자격 있는 모래상자상담사 채용</p>
+                <p className="text-gray-700">상담기관은 적합한 자격과 전문적인 능력을 갖춘 모래상자상담사를 채용해야 한다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">2. 성실성</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 상담에 대한 정보제공</p>
+                <p className="text-gray-700">모래상자상담사는 자신의 신념체계, 가치, 제한점 등이 상담에 미칠 영향력을 자각하고, 내담자에게 상담의 목표, 기법, 상담의 이점, 한계점, 위험성, 상담자의 강점과 제한점, 심리평가와 보고서의 목적과 용도, 상담비용 및 지불방법 등을 명확히 알려야한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 전문인으로서의 가치와 권위 유지</p>
+                <p className="text-gray-700">모래상자상담사는 개인의 이익을 위해 상담전문직의 가치와 권위를 훼손하는 행동을 해선 안된다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 적합한 대안 모색</p>
+                <p className="text-gray-700">모래상자상담사는 능력의 한계나 개인적인 문제로 내담자를 적절하게 도와줄 수 없을 때에는 상담을 시작해서는 안 되며, 다른 모래상자상담사나 정신건강전문가에게 의뢰하는 등 도움을 제공할 수 있는 최선의 방법을 강구한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(4) 상담 중단 시의 대처</p>
+                <p className="text-gray-700">모래상자상담사는 자신의 질병, 죽음, 이동, 기관의 폐업 등과 같은 요인에 의해 상담이 중단될 경우, 이에 대한 적절한 조치를 취해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(5) 종결에 대한 대처</p>
+                <p className="text-gray-700">모래상자상담사는 종결 시 내담자의 관점과 요구에 대해 의논해야 하며, 다른 전문가를 필요로 할 경우에는 적절한 과정을 거쳐서 의뢰해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(6) 동료에 대한 태도</p>
+                <p className="text-gray-700">모래상자상담사는 내담자나 학생, 연구 참여자, 동료가 피해를 입지 않도록 조치를 취해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(7) 오용에 대한 대처</p>
+                <p className="text-gray-700">모래상자상담사는 자신의 기술이나 자료가 다른 사람들에 의해 오용될 가능성이 있는 활동에 참여해서는 안된다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ⅱ. 사회적 책임 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">Ⅱ. 사회적 책임</h4>
+
+        <div className="space-y-6">
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">1. 질 높은 치료를 제공하기 위한 책임감</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 치료의 효과성 점검</p>
+                <p className="text-gray-700">모래상자상담사는 전문가로서 치료 진행에 대한 효과성을 점검하기 위해 전문적 평가방식을 활용해야 하고, 진행되는 치료의 효과를 증진시키기 위해 그에 부합한 훈련, 교육, 슈퍼비전 받으며, 연구·실천하는 노력을 해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 지속적인 교육과 연구</p>
+                <p className="text-gray-700">모래상자상담사는 새로운 연구방법을 개발하고, 그들이 만나는 다양하고 또는 특별한 인구집단에 대한 경향에 주목하면서, 모래상자치료에서 최근 조사연구에 대한 지식을 유지하기 위해 지속적인 교육을 받는다. 모래상자상담사는 내담자의 다양성에 대한 새로운 연구방법 및 모형에 대한 지식을 실천하고 능력을 유지시켜야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 상담자의 건강상 결함</p>
+                <p className="text-gray-700">모래상자상담사는 그들의 신체적, 정신적, 또는 정서적 문제들이 내담자나 타인에게 해를 끼칠 수 있을 때, 모래상자치료 실시를 삼가해야 한다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">2. 자격 취득</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 승인된 자격증</p>
+                <p className="text-gray-700">한국모래상자치료학회가 인정하는 자격증은 모래상자상담사 2급, 모래상자상담사 1급, 모래상자치료 전문가, 모래상자치료 슈퍼바이저, 모래상자치료 교육분석가이다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 자격 취득 지침</p>
+                <p className="text-gray-700">모래상자상담사는 한국모래상자치료학회에서 규정한 자격취득 지침을 준수해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 자격 취득의 허위 기재</p>
+                <p className="text-gray-700">모래상자상담사는 자격취득 내용을 절대 허위로 기재해서는 안된다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(4) 타 분야에서 받은 박사학위</p>
+                <p className="text-gray-700">모래상자상담사는 타분야에서 받은 박사학위 명칭을 놀이치료 실무현장에서 사용해서는 안된다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">3. 홍보</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 개인정보의 표시</p>
+                <p className="text-gray-700">모래상자상담사는 자격, 학력, 경력을 정확히 표시해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 자격증</p>
+                <p className="text-gray-700">모래상자상담사는 자격증을 부당하게 취득하거나 악용해서는 안된다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 잘못 표시된 문구의 시정</p>
+                <p className="text-gray-700">모래상자상담사는 모래상자치료에 관한 문구들이 잘못 진술된 경우, 즉시 시정해야한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(4) 지위남용 금지</p>
+                <p className="text-gray-700">모래상자상담사는 지위를 남용해서 부당한 이득을 취해서는 안된다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(5) 전문가 활동에 참여</p>
+                <p className="text-gray-700">모래상자상담사는 모래상자치료의 발전과 향상을 촉진시키는 지역, 전국, 국제 조직에 적극적으로 참여해야 한다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-4">
+            <h5 className="text-lg font-bold mb-4 text-gray-800">4. 공적 책임감</h5>
+            <div className="pl-4 space-y-4">
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(1) 차별 금지</p>
+                <p className="text-gray-700">모래상자상담사는 연령, 문화, 장애, 성별, 종교, 성적 취향, 또는 사회경제적 지위에 근거하여 또는 어떤 법적 이유 때문에 부정적 영향을 미치는 방식으로 내담자, 학생, 슈퍼바이지를 차별해서는 안된다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(2) 개인 의견의 진술</p>
+                <p className="text-gray-700">공적인 상황에서 개인 의견을 제시하게 됐을 때, 모래상자상담사는 그 내용이 자신의 관점이며, 전체 모래상자상담사를 대표하는 의견이 아님을 명확히 해야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(3) 매체를 활용한 발표</p>
+                <p className="text-gray-700">모래상자상담사가 공적인 강연, 발표, 매체를 활용한 프로그램들을 통해 조언이나 의견을 제공할 때 근거를 밝혀야 한다.</p>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm">
+                <p className="font-semibold text-gray-800 mb-2">(4) 착취 및 악용</p>
+                <p className="text-gray-700">모래상자상담사는 부당한 이득을 얻기 위해 내담자를 착취 또는 악용해서는 안된다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 안내 문구 */}
+      <div className="mt-10 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+        <p className="text-base text-gray-700 leading-relaxed">
+          ※ 본 윤리규정은 총 14페이지로 구성되어 있으며, 아동, 부모와 가족, 심리평가, 사생활에 대한 권리, 조사연구 및 훈련, 연구, 전문가와 협력관계 등의 추가 내용이 포함되어 있습니다.
+          <br />전체 내용은 학회 사무국에 문의하시거나 PDF 파일을 다운로드하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// 연구윤리규정 콘텐츠 (r2.pdf)
+function ResearchEthicsContent() {
+  return (
+    <div className="prose prose-gray max-w-none space-y-8" style={{ fontFamily: 'Noto Sans KR, sans-serif' }}>
+      <section className="mb-8 p-6 bg-gray-50 rounded-lg">
+        <h4 className="text-2xl font-bold mb-4 text-gray-800">&lt;모래상자치료연구&gt; 윤리 규정</h4>
+        <p className="text-sm text-gray-600 mb-4">(2009. 5. 제정)</p>
+      </section>
+
+      <div className="space-y-6">
+        <section className="bg-white p-6 rounded-lg shadow-sm">
+          <h5 className="text-xl font-bold mb-4 text-gray-800">1. 표절행위에 관한 윤리규정</h5>
+          <div className="space-y-3 pl-4">
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">1)</span>
+              <p className="text-gray-700">타인의 연구에서 가져온 용어, 아이디어, 그림 등을 저자의 동의나 출처의 고지 없이 사용하여서는 안 된다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">2)</span>
+              <p className="text-gray-700">타인이나 자신이 수행한 연구의 내용을 그대로 인용할 경우 저자와 출처를 반드시 밝혀야 한다. " "를 이용하여 인용한 문장임을 표시한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">3)</span>
+              <p className="text-gray-700">타인의 말을 요약하거나 문장이나 용어의 순서를 바꾸어 기술하는 경우에도 본문 중에 인용한 내용임을 명시하여야 한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">4)</span>
+              <p className="text-gray-700">자신이 수행하지 않은 연구나 주장의 일부를 자신의 주장인 것처럼 논문에 제시하여서는 안 된다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white p-6 rounded-lg shadow-sm">
+          <h5 className="text-xl font-bold mb-4 text-gray-800">2. 중복 투고에 관한 윤리규정</h5>
+          <div className="space-y-3 pl-4">
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">1)</span>
+              <p className="text-gray-700">동일한 논문을 서로 다른 학술지에 투고하여 심사받거나 분명하고 타당한 이유 없이 하나의 논문으로 다수의 논문을 생산하는 행위는 바람직하지 않다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">2)</span>
+              <p className="text-gray-700">이미 출판된 논문을 다른 학술지에 투고하여서는 안 된다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">4)</span>
+              <p className="text-gray-700">이미 출판된 논문의 자료를 사용한 경우 자료의 출처를 논문에 밝혀야 한다. 저자는 편집자에게 이미 발표된 논문과의 차별성을 설명하고, 이중출판에 해당하는지 여부를 확인하여야 한다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white p-6 rounded-lg shadow-sm">
+          <h5 className="text-xl font-bold mb-4 text-gray-800">3. 연구자에 관한 윤리규정</h5>
+          <div className="space-y-3 pl-4">
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">1)</span>
+              <p className="text-gray-700">연구자는 실제 연구에 대한 아이디어를 창출하고 연구를 수행하는데 공헌한 연구에 대해서만 업적으로 인정받을 수 있다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">2)</span>
+              <p className="text-gray-700">연구를 수행하는데 가장 큰 공헌을 한 사람이 제1저자가 되며, 공저자의 경우 직위에 관계없이 연구에 기여한 정도를 상대적으로 정확하게 반영하여야 한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">3)</span>
+              <p className="text-gray-700">연구를 수행하는데 공저자가 동등하게 공헌한 경우에는 저자들의 상호합의에 의해 순서를 결정한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">4)</span>
+              <p className="text-gray-700">연구를 수행하는데 정당한 공헌 없이 연구업적을 인정받으려는 행위는 연구자의 윤리에 위배된다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white p-6 rounded-lg shadow-sm">
+          <h5 className="text-xl font-bold mb-4 text-gray-800">4. 연구과정에 관한 윤리규정</h5>
+          <div className="space-y-3 pl-4">
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">1)</span>
+              <p className="text-gray-700">연구의 목적과 절차, 결과에 대한 정확한 자료를 제시하여야 한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">2)</span>
+              <p className="text-gray-700">연구 참여자에게 연구와 관련한 내용을 설명하고 참여에 대한 동의를 구하며 관련 자료를 보관하여야 한다.</p>
+            </div>
+            <div className="flex gap-2">
+              <span className="font-semibold text-gray-700">3)</span>
+              <p className="text-gray-700">윤리규정의 위반에 대한 사안의 발생 시 한국모래상자치료학회는 윤리위원회를 소집하여 사실을 조사심의하고 징계를 결정한다.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+// 자격규정 콘텐츠 (r3.pdf - 19페이지)
+function QualificationContent() {
+  return (
+    <div className="prose prose-gray max-w-none space-y-8" style={{ fontFamily: 'Noto Sans KR, sans-serif' }}>
+      <section className="mb-8 p-6 bg-gray-50 rounded-lg">
+        <h4 className="text-2xl font-bold mb-4 text-gray-800">한국모래상자치료학회 모래상자 상담사 인간자격관리운영규정</h4>
+        <p className="text-sm text-gray-600">(최근 개정일: 2015년 01월 01일)</p>
+      </section>
+
+      {/* 제1장 총칙 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">제1장 총칙</h4>
+
+        <div className="space-y-4">
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제1조(목적)</h5>
+            <p className="text-gray-700 leading-relaxed">본 규정은 한국모래상자치료학회 (이하 본 학회라 칭한다) 정관 제4조 3항에 명시된 회원을 대상으로 한 모래상자 상담사 자격검정에 필요한 자격 관리에 관한 사항을 규정함을 목적으로 한다.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제2조(정의)</h5>
+            <p className="text-gray-700 leading-relaxed">모래상자 상담사라 함은 본 학회의 정회원 또는 준회원으로서 본 학회가 요구하는 소정의 수련과정을 이수하고 자격시험에 합격한 후 자격심사를 거쳐 본 학회가 발급하는 자격증을 부여받은 자를 말한다.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 제2장 자격 등급 및 역할 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">제2장 자격 등급 및 역할</h4>
+
+        <div className="space-y-4">
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제3조(자격구분)</h5>
+            <p className="text-gray-700 mb-3">자격은 다음과 같이 구분한다:</p>
+            <ul className="list-decimal list-inside space-y-2 pl-4 text-gray-700">
+              <li>모래상자상담 전문가</li>
+              <li>모래상자상담사 1급</li>
+              <li>모래상자상담사 2급</li>
+            </ul>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제4조(모래상자상담 전문가)</h5>
+            <p className="text-gray-700 mb-3">모래상자상담 전문가는 다음에 해당하는 자로서 본 학회 자격관리위원회의 인준을 거쳐 본 학회가 발급하는 자격증을 부여받은 자로 한다.</p>
+            <div className="space-y-2 pl-4">
+              <p className="text-gray-700">1. 본 학회 정회원인자</p>
+              <p className="text-gray-700">2. 본 학회 모래상자상담사 1급 자격을 취득한 자</p>
+              <p className="text-gray-700">3. 본 학회가 인정하는 전문가의 지도하에 학회에서 요구하는 소정의 수련과정을 거친 자</p>
+              <p className="text-gray-700">4. 본 학회에서 명시된 과목을 이수하고 본 학회에서 실시하는 모래상자전문가 자격시험에 합격한 자</p>
+              <p className="text-gray-700">5. 면접시험에 합격한 자</p>
+              <p className="text-gray-700">6. 자격관리위원회의 심의를 거쳐 모래상자상담사 전문가의 자격수준에 상응하는 것으로 인정할 수 있는 상담관련 분야의 전문가 자격증을 취득하고 본 학회 정회원으로서 1년 이상의 활동실적을 가진 자</p>
+              <p className="text-gray-700">7. 학회에서 실시한 소정의 윤리교육을 이수한 자</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제5조(모래상자상담사 1급)</h5>
+            <p className="text-gray-700 mb-3">모래상자상담사 1급은 다음에 해당하는 자로서 본 학회 자격관리위원회의 인준을 거쳐 본 학회가 발급하는 자격증을 부여받은 자로 한다.</p>
+            <div className="space-y-2 pl-4">
+              <p className="text-gray-700">1. 본 학회 정회원인자</p>
+              <p className="text-gray-700">2. 본 학회 모래상자상담사 2급 자격을 취득하거나 또는 학사를 졸업한 후 현장경력 2년 이상인 자 (대학원 재학생 및 석사학위 소지자)</p>
+              <p className="text-gray-700">3. 본 학회가 인정하는 수련기관(교육인증기관)에서 모래상자상담 교육분석가 및 전문가의 지도하에 학회에서 요구하는 소정의 수련과정을 거친 자</p>
+              <p className="text-gray-700">4. 본 학회에 명시된 과목을 이수하고 본 학회에서 실시하는 모래상자상담사 1급 자격시험에 합격한 자</p>
+              <p className="text-gray-700">5. 면접시험에 합격한 자</p>
+              <p className="text-gray-700">6. 학회에서 실시한 소정의 윤리교육을 이수한 자</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제6조(모래상자상담사 2급)</h5>
+            <p className="text-gray-700 mb-3">모래상자상담사 2급은 다음에 해당하는 자로서 본 학회 자격관리위원회의 인준을 거쳐 본 학회가 발급하는 자격증을 부여받은 자로 한다.</p>
+            <div className="space-y-2 pl-4">
+              <p className="text-gray-700">1. 본 학회 정회원이며 대학교 및 전문대학교 재학생</p>
+              <p className="text-gray-700">2. 학회가 인정하는 수련기관(교육연수 인증기관)에서 모래상자상담 전문가의 지도하에 학회에서 요구하는 소정의 수련과정을 거친 자</p>
+              <p className="text-gray-700">3. 대학 또는 본 학회에서 실시하는 모래상자상담사 2급 자격시험에 합격한 자</p>
+              <p className="text-gray-700">4. 면접 심사에 합격한 자</p>
+              <p className="text-gray-700">5. 학회에서 실시한 소정의 윤리교육을 이수한 자 (모래상자상담사 2급은 자격연수에 윤리교육을 포함할 수 있다)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 안내 문구 */}
+      <div className="mt-10 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+        <p className="text-base text-gray-700 leading-relaxed">
+          ※ 본 자격규정은 총 19페이지로 구성되어 있으며, 수련과정, 자격검정, 자격의 유지, 필기 및 면접시험, 부정행위자 처리 등의 추가 내용이 포함되어 있습니다.
+          <br />전체 내용은 학회 사무국에 문의하시거나 PDF 파일을 다운로드하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// 편집규정 콘텐츠 (r4.pdf)
+function EditorialContent() {
+  return (
+    <div className="prose prose-gray max-w-none space-y-8" style={{ fontFamily: 'Noto Sans KR, sans-serif' }}>
+      <section className="mb-8 p-6 bg-gray-50 rounded-lg">
+        <h4 className="text-2xl font-bold mb-4 text-gray-800">『모래상자치료연구』발간 및 투고규정</h4>
+        <div className="space-y-1 text-sm text-gray-600">
+          <p>제정: 2008.10.10.</p>
+          <p>제1차 개정: 2010. 10. 10</p>
+          <p>제2차 개정: 2019. 9. 30</p>
+          <p>제3차 개정: 2020. 12. 30</p>
+        </div>
+      </section>
+
+      {/* 학회지 발간 */}
+      <section className="mb-8">
+        <div className="space-y-4">
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제1조 [학회지의 발간 및 명칭]</h5>
+            <p className="text-gray-700 leading-relaxed">한국모래상자치료학회는 국내외 '모래상자치료'를 연구하는 자들의 연구활동과 정보교환을 촉진시키기 위해 정기적인 학술지로서 『모래상자치료연구』(Journal of Sandtray Therapy)를 발간한다.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제2조 [학회지의 발행처]</h5>
+            <p className="text-gray-700 leading-relaxed">『모래상자치료연구』(Journal of Sandtray Therapy)의 발행처는 본 학회로 하며, 출판 및 인쇄는 본 학회와 계약한 출판사로 한다.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제3조 [학회지의 성격]</h5>
+            <p className="text-gray-700 leading-relaxed">본 『모래상자치료연구』는 모래상자치료 분야와 관련된 논문 및 비평논문을 게재함을 원칙으로 한다. 단, 학술정보의 빠른 교환을 위해 신간서적에 대한 서평, 최신연구동향 안내, 회원들의 연구업적 보고 및 연구활동의 활성화를 위한 제언 등 모래상자치료 연구에 도움이 된다고 생각되는 내용을 게재할 수 있다.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제4조 [발간 횟수와 발간일]</h5>
+            <p className="text-gray-700 mb-3">본 『모래상자치료연구』는 연 1회에 정기적으로 발간한다.</p>
+            <div className="overflow-x-auto">
+              <table className="min-w-full border-collapse border border-gray-300">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="border border-gray-300 px-4 py-2 text-left">호수</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">원고마감일</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">발행일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">매권</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      (기존)당해연도 12월 31일<br />
+                      (변경)당해연도 5월 30일
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      (기존)당해연도 2월 28일<br />
+                      (변경)당해연도 8월 31일
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제5조 [논문의 자격]</h5>
+            <p className="text-gray-700 leading-relaxed">본 『모래상자치료연구』에 게재되는 논문(사례연구논문포함)과 다른 출판물에 발표되지 않은 글에 한정한다.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">제6조 [논문 투고자격]</h5>
+            <p className="text-gray-700 leading-relaxed">투고자는 석사학위 소지자 이상의 한국모래상자치료학회의 회원을 원칙으로 한다. 단, 회원의 추천과 편집위원회의 동의가 있을 경우에는 비회원의 논문도 게재할 수 있다.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 원고작성 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">제7조 [원고의 작성 및 투고]</h4>
+
+        <div className="space-y-4">
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">Ⅰ. 원고작성</h5>
+            <div className="space-y-3 pl-4">
+              <p className="text-gray-700">1. 투고 논문은 모래상자치료에 관련된 것으로 미발표 논문을 원칙으로 한다.</p>
+              <p className="text-gray-700">2. 논문 작성은 한글과 외국어 모두 가능하다.</p>
+              <p className="text-gray-700">3. 원고 집필 시 사용하는 워드프로세서는 한글 프로그램으로 작성한다.</p>
+              <p className="text-gray-700">4. 논문의 요약을 논문 제목 아래 부분에 400자 이내로 제시한다. (가로 80열, 세로 8행 내외, 휴먼명조 9.5포인트로 한다.)</p>
+              <p className="text-gray-700">5. Key Word를 국문과 영문 4~5개어로 제시한다. 예) 모래상자치료(Sandtray Therapy)</p>
+              <p className="text-gray-700">6. 원고 분량은 A4(가로 80열 세로 33행) 크기로 20페이지를 원칙으로 초과시엔 별도경비를 징수한다. (휴먼명조 10포인트를 기준으로 함)</p>
+              <p className="text-gray-700">7. 논문게재를 희망하는 자는 논문 파일을 본 학회에 제출한다(한글파일 형식).</p>
+              <p className="text-gray-700">8. 연구비 지원에 의해 작성된 논문은 논문 첫 페이지 하단에 연구비 지원을 밝힌다. 단, 외부기관 연구비 지원에 의해 수행된 논문의 게재료는 별도로 적용된다.</p>
+              <p className="text-gray-700">9. 연구자의 소속과 직위를 첫 페이지 하단에 밝힌다.</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h5 className="text-lg font-bold mb-3 text-gray-800">Ⅱ. 문단모양</h5>
+            <div className="space-y-3 pl-4">
+              <div>
+                <p className="text-gray-700 font-semibold mb-2">1. 논문의 중간 제목은 다음의 순으로 한다.</p>
+                <div className="pl-4 space-y-1 text-gray-700">
+                  <p>Ⅰ. . . . .</p>
+                  <p>1. . . . . .</p>
+                  <p>1.1 . . . . .</p>
+                  <p>1.1.1 추가</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-gray-700 font-semibold mb-2">2. 본문 기본 서식은 다음과 같다.</p>
+                <div className="pl-4 space-y-1 text-gray-700">
+                  <p>․ 서 체: 휴먼명조 / ․ 크 기: 10</p>
+                  <p>․ 줄간격: 160% / ․ 장 평: 100</p>
+                  <p>․ 자 간: 0 / ․ 들여쓰기: 2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 심사료 및 게재료 */}
+      <section className="mb-8">
+        <h4 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-gray-300 pb-2">제8조 [심사료 및 게재료]</h4>
+
+        <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="space-y-4">
+            <div>
+              <p className="text-gray-700 font-semibold mb-2">1. 논문 투고시 연회비 입금안내:</p>
+              <div className="pl-4 space-y-1 text-gray-700">
+                <p>입회비 10,000 / 연회비 30,000(일반회원인 경우)</p>
+                <p>계좌번호: 전북은행 1013-01-0803659, 한국모래상자치료학회 송순</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-gray-700 font-semibold mb-2">심사료: 60,000</p>
+              <p className="text-gray-700 pl-4">농협 356-1193-3637-03, 한국모래상자치료학회 이미나</p>
+            </div>
+            <div>
+              <p className="text-gray-700 font-semibold mb-2">게재료: 100,000</p>
+              <p className="text-gray-700 pl-4">농협 356-1193-3637-03, 한국모래상자치료학회 이미나</p>
+              <p className="text-sm text-gray-600 pl-4 mt-1">(단, 등재후보지 전까지는 게재료에 한하여 학회에서 50% 지원키로 함)</p>
+            </div>
+            <div>
+              <p className="text-gray-700">2. 규정된 원고분량을 초과하는 경우, 저자는 초과매수당 일정액의 비용을 부담해야 한다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 안내 문구 */}
+      <div className="mt-10 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+        <p className="text-base text-gray-700 leading-relaxed">
+          ※ 본 편집규정에는 논문의 양식, 참고문헌 작성법, 표와 그림 작성법, 심사 절차 등의 상세한 내용이 포함되어 있습니다.
+          <br />전체 내용은 학회 사무국에 문의하시거나 PDF 파일을 다운로드하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function RegulationsPage() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    { name: "한국모래상자치료학회 윤리규정" },
+    { name: "연구윤리규정" },
+    { name: "자격규정" },
+    { name: "편집규정" },
+  ];
+
+  return (
+    <main
+      className="min-h-screen"
+      style={{
+        background: `linear-gradient(135deg,
+          #e2e8f0 0%,
+          #f1f5f9 15%,
+          #f8f9fa 30%,
+          #fafafa 45%,
+          #f8f9fa 60%,
+          #f1f5f9 75%,
+          #cbd5e1 90%,
+          #94a3b8 100%)`
+      }}
+    >
+      {/* 헤더 섹션 */}
+      <section className="relative pt-42 pb-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
+            className="text-4xl md:text-5xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-600 mb-4"
+            style={{ fontFamily: 'GMarketSans, sans-serif', fontWeight: 500 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            규정
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            한국모래상자치료학회의 운영 규정 및 윤리 지침
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 탭 및 콘텐츠 섹션 */}
+      <section className="pb-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {/* 탭 네비게이션 */}
+            <div className="mb-8">
+              {/* 데스크톱: 한 줄, 모바일: 두 줄 */}
+              <div className="hidden md:flex justify-center gap-4">
+                {tabs.map((tab, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTab(index)}
+                    className={`px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 ${
+                      activeTab === index
+                        ? 'bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg border border-gray-200/50'
+                        : 'bg-white/30 backdrop-blur-sm text-gray-600 hover:bg-white/50 border border-gray-200/30'
+                    }`}
+                    style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+                  >
+                    {tab.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* 모바일: 두 줄 배치 */}
+              <div className="md:hidden space-y-2">
+                {/* 첫 번째 줄: 윤리규정, 연구윤리규정 */}
+                <div className="flex justify-center gap-2">
+                  {[0, 1].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTab(index)}
+                      className={`flex-1 px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
+                        activeTab === index
+                          ? 'bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg border border-gray-200/50'
+                          : 'bg-white/30 backdrop-blur-sm text-gray-600 hover:bg-white/50 border border-gray-200/30'
+                      }`}
+                      style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+                    >
+                      {tabs[index].name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* 두 번째 줄: 자격규정, 편집규정 */}
+                <div className="flex justify-center gap-2">
+                  {[2, 3].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTab(index)}
+                      className={`flex-1 px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
+                        activeTab === index
+                          ? 'bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg border border-gray-200/50'
+                          : 'bg-white/30 backdrop-blur-sm text-gray-600 hover:bg-white/50 border border-gray-200/30'
+                      }`}
+                      style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+                    >
+                      {tabs[index].name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 콘텐츠 */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 overflow-hidden">
+              <div className="p-6 md:p-8 max-h-[800px] overflow-y-auto">
+                {activeTab === 0 && <EthicsContent />}
+                {activeTab === 1 && <ResearchEthicsContent />}
+                {activeTab === 2 && <QualificationContent />}
+                {activeTab === 3 && <EditorialContent />}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 푸터 */}
+      <Footer />
+    </main>
+  );
+}

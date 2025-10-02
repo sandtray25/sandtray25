@@ -1,0 +1,5 @@
+{
+  "/about/articles/page": "app/about/articles/page.js",
+  "/about/regulations/page": "app/about/regulations/page.js",
+  "/about/history/page": "app/about/history/page.js"
+}
