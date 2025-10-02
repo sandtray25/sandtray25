@@ -11,11 +11,6 @@ interface LogoProps {
 }
 
 export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isTestPage = false }: LogoProps) => {
-  const r2BucketUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
-  const logoSrc = r2BucketUrl 
-    ? `${r2BucketUrl}/logo/logo.png`
-    : "/logo/logo.png"; // fallback to local path
-
   return (
     <Link
       href="/"
@@ -25,11 +20,12 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       )}
     >
       <Image
-        src={logoSrc}
+        src="/images/logo.png"
         alt="한국모래상자치료학회 로고"
         width={50}
         height={29}
         className="object-contain block"
+        priority
       />
       {!visible && !isMobile && (
         <span

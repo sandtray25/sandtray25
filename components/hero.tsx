@@ -65,8 +65,9 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
         loop
         playsInline
         autoPlay
+        preload="auto"
       >
-        <source src={process.env.NEXT_PUBLIC_R2_BUCKET_URL ? `${process.env.NEXT_PUBLIC_R2_BUCKET_URL}/images/b2_v.mp4` : "/images/b2_v.mp4"} type="video/mp4" />
+        <source src="/images/b2_v.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient Background Layer */}

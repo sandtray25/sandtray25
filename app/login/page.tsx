@@ -225,15 +225,10 @@ const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => {
 };
 
 const AuthIllustration = () => {
-  const r2BucketUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
-  const imageSrc = r2BucketUrl 
-    ? `${r2BucketUrl}/images/login.png`
-    : "/images/login.png"; // fallback to local path
-
   return (
     <div className="relative min-h-80 w-full overflow-hidden rounded-2xl">
       <Image
-        src={imageSrc}
+        src="/images/login.png"
         alt="로그인 이미지"
         fill
         priority
