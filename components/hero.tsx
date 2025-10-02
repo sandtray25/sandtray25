@@ -46,8 +46,8 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
     <div 
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
       style={{ 
-        backgroundColor: '#3d2817',
-        background: 'linear-gradient(135deg, #2d1f1a 0%, #3d2817 25%, #5c4033 50%, #7d5a4a 75%, #9d7c6a 100%)'
+        backgroundColor: '#E6C200',
+        background: 'linear-gradient(135deg, #E6C200 0%, #F0D400 25%, #F5DC00 50%, #F9E100 75%, #FFE600 100%)'
       }}
     >
       {/* Background Video */}
