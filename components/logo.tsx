@@ -13,8 +13,8 @@ interface LogoProps {
 export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isTestPage = false }: LogoProps) => {
   const r2BucketUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
   const logoSrc = r2BucketUrl 
-    ? `${r2BucketUrl}/images/logo.png`
-    : "/images/logo.png"; // fallback to local path
+    ? `${r2BucketUrl}/logo/logo.png`
+    : "/logo/logo.png"; // fallback to local path
 
   return (
     <Link
