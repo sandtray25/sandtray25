@@ -1,0 +1,202 @@
+[
+  {
+    "name": "admin",
+    "columns": 6
+  },
+  {
+    "name": "bal_info",
+    "columns": 11
+  },
+  {
+    "name": "bbs_bumup",
+    "columns": 6
+  },
+  {
+    "name": "bbs_check",
+    "columns": 3
+  },
+  {
+    "name": "bbs_info",
+    "columns": 33
+  },
+  {
+    "name": "board",
+    "columns": 70
+  },
+  {
+    "name": "board_admin",
+    "columns": 5
+  },
+  {
+    "name": "board_cmt",
+    "columns": 15
+  },
+  {
+    "name": "board_config",
+    "columns": 1
+  },
+  {
+    "name": "case_cer_set",
+    "columns": 678
+  },
+  {
+    "name": "category",
+    "columns": 8
+  },
+  {
+    "name": "cer_t",
+    "columns": 1818
+  },
+  {
+    "name": "configs",
+    "columns": 1
+  },
+  {
+    "name": "count_clientlog",
+    "columns": 3
+  },
+  {
+    "name": "count_dateLog",
+    "columns": 33
+  },
+  {
+    "name": "count_domainlog",
+    "columns": 3
+  },
+  {
+    "name": "count_Logadmin",
+    "columns": 7
+  },
+  {
+    "name": "count_monthlog",
+    "columns": 33
+  },
+  {
+    "name": "count_statistics",
+    "columns": 25
+  },
+  {
+    "name": "count_Totallog",
+    "columns": 2
+  },
+  {
+    "name": "count_weekLog",
+    "columns": 8
+  },
+  {
+    "name": "edu_cer_set",
+    "columns": 720
+  },
+  {
+    "name": "gangsa_list",
+    "columns": 46
+  },
+  {
+    "name": "hak_cer_set",
+    "columns": 108
+  },
+  {
+    "name": "mem",
+    "columns": 24
+  },
+  {
+    "name": "memo",
+    "columns": 4
+  },
+  {
+    "name": "money_case",
+    "columns": 5521
+  },
+  {
+    "name": "money_conf",
+    "columns": 4
+  },
+  {
+    "name": "money_edu",
+    "columns": 4826
+  },
+  {
+    "name": "money_hak",
+    "columns": 4821
+  },
+  {
+    "name": "money_info",
+    "columns": 14
+  },
+  {
+    "name": "money_info(20180717)",
+    "columns": 12
+  },
+  {
+    "name": "money_jag",
+    "columns": 3948
+  },
+  {
+    "name": "money_nonmun",
+    "columns": 1489
+  },
+  {
+    "name": "money_party",
+    "columns": 4859
+  },
+  {
+    "name": "money_poster",
+    "columns": 1470
+  },
+  {
+    "name": "money_renewal",
+    "columns": 1236
+  },
+  {
+    "name": "money_renewal_set",
+    "columns": 16
+  },
+  {
+    "name": "money_set",
+    "columns": 16
+  },
+  {
+    "name": "nonmun_cer_set",
+    "columns": 108
+  },
+  {
+    "name": "outmem",
+    "columns": 26
+  },
+  {
+    "name": "outmem_20140508",
+    "columns": 24
+  },
+  {
+    "name": "outmem_20191024",
+    "columns": 21
+  },
+  {
+    "name": "outmem_old",
+    "columns": 20
+  },
+  {
+    "name": "poster_cer_set",
+    "columns": 88
+  },
+  {
+    "name": "yunsoo_list",
+    "columns": 489
+  },
+  {
+    "name": "_1",
+    "columns": 42
+  },
+  {
+    "name": "_2",
+    "columns": 42
+  },
+  {
+    "name": "_4",
+    "columns": 42
+  },
+  {
+    "name": "_5",
+    "columns": 42
+  }
+]

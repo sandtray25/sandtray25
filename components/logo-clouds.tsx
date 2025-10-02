@@ -42,24 +42,24 @@ export function LogoClouds() {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 rounded-lg transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                  className="group flex items-center justify-center p-6 rounded-xl transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm cursor-pointer"
                 >
                   <Image
                     src={partner.logo}
                     alt={`협력기관 로고 ${rowIndex * 2 + index + 1}`}
                     width={120}
                     height={120}
-                    className="object-contain transition-all duration-500"
+                    className="object-contain transition-all duration-300 group-hover:opacity-80"
                     style={{
-                      filter: 'grayscale(100%) brightness(0.95)',
-                      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                      filter: 'grayscale(80%) brightness(0.9)',
+                      transition: 'all 0.3s ease-out'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.filter = 'grayscale(0%) brightness(1.05) drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.1))';
-                      e.currentTarget.style.transform = 'scale(1.1)';
+                      e.currentTarget.style.filter = 'grayscale(0%) brightness(1)';
+                      e.currentTarget.style.transform = 'scale(1.02)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.filter = 'grayscale(100%) brightness(0.95)';
+                      e.currentTarget.style.filter = 'grayscale(80%) brightness(0.9)';
                       e.currentTarget.style.transform = 'scale(1)';
                     }}
                   />
@@ -79,24 +79,24 @@ export function LogoClouds() {
                 href={partner.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-4 rounded-lg transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                className="group flex items-center justify-center p-6 rounded-xl transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm cursor-pointer"
               >
                 <Image
                   src={partner.logo}
                   alt={`협력기관 로고 ${index + 1}`}
                   width={120}
                   height={120}
-                  className="object-contain transition-all duration-500"
+                  className="object-contain transition-all duration-300 group-hover:opacity-80"
                   style={{
-                    filter: 'grayscale(100%) brightness(0.95)',
-                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    filter: 'grayscale(80%) brightness(0.9)',
+                    transition: 'all 0.3s ease-out'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1.05) drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.1))';
-                    e.currentTarget.style.transform = 'scale(1.1)';
+                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1)';
+                    e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0.95)';
+                    e.currentTarget.style.filter = 'grayscale(80%) brightness(0.9)';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                 />
@@ -112,7 +112,7 @@ export function LogoClouds() {
                 href={partners[4].url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-4 rounded-lg transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                className="group flex items-center justify-center p-6 rounded-xl transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm cursor-pointer"
                 style={{ marginLeft: '6%' }}
               >
                 <Image
@@ -120,17 +120,17 @@ export function LogoClouds() {
                   alt="협력기관 로고 5"
                   width={120}
                   height={120}
-                  className="object-contain transition-all duration-500"
+                  className="object-contain transition-all duration-300 group-hover:opacity-80"
                   style={{
-                    filter: 'grayscale(100%) brightness(0.95)',
-                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    filter: 'grayscale(80%) brightness(0.9)',
+                    transition: 'all 0.3s ease-out'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1.05) drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.1))';
-                    e.currentTarget.style.transform = 'scale(1.1)';
+                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1)';
+                    e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0.95)';
+                    e.currentTarget.style.filter = 'grayscale(80%) brightness(0.9)';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                 />
@@ -141,24 +141,24 @@ export function LogoClouds() {
                 href={partners[5].url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-4 rounded-lg transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                className="group flex items-center justify-center p-6 rounded-xl transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm cursor-pointer"
               >
                 <Image
                   src={partners[5].logo}
                   alt="협력기관 로고 6"
                   width={120}
                   height={120}
-                  className="object-contain transition-all duration-500"
+                  className="object-contain transition-all duration-300 group-hover:opacity-80"
                   style={{
-                    filter: 'grayscale(100%) brightness(0.95)',
-                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    filter: 'grayscale(80%) brightness(0.9)',
+                    transition: 'all 0.3s ease-out'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1.05) drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.1))';
-                    e.currentTarget.style.transform = 'scale(1.1)';
+                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1)';
+                    e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0.95)';
+                    e.currentTarget.style.filter = 'grayscale(80%) brightness(0.9)';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                 />
@@ -169,7 +169,7 @@ export function LogoClouds() {
                 href={partners[6].url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-4 rounded-lg transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                className="group flex items-center justify-center p-6 rounded-xl transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm cursor-pointer"
                 style={{ marginRight: '6%' }}
               >
                 <Image
@@ -177,17 +177,17 @@ export function LogoClouds() {
                   alt="협력기관 로고 7"
                   width={120}
                   height={120}
-                  className="object-contain transition-all duration-500"
+                  className="object-contain transition-all duration-300 group-hover:opacity-80"
                   style={{
-                    filter: 'grayscale(100%) brightness(0.95)',
-                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    filter: 'grayscale(80%) brightness(0.9)',
+                    transition: 'all 0.3s ease-out'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1.05) drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.1))';
-                    e.currentTarget.style.transform = 'scale(1.1)';
+                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1)';
+                    e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0.95)';
+                    e.currentTarget.style.filter = 'grayscale(80%) brightness(0.9)';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                 />

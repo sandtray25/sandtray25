@@ -231,6 +231,7 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
                       <Link
                         key={childIdx}
                         href={child.link}
+                        onClick={() => setOpenDropdown(null)}
                         className="block rounded-md px-3 py-2 text-base transition-colors hover:bg-muted"
                       >
                         <motion.div whileHover={{ x: 4 }}>
@@ -402,7 +403,10 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
                                 <Link
                                   key={childIdx}
                                   href={child.link}
-                                  onClick={() => setOpen(false)}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setExpandedItems(new Set());
+                                  }}
                                   className="block rounded-md px-3 py-2 text-base transition-colors hover:bg-muted"
                                 >
                                   <motion.div whileHover={{ x: 4 }}>

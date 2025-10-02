@@ -90,12 +90,12 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6) 100%)`
+          background: `radial-gradient(ellipse 80% 60% at center, transparent 20%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.5) 100%)`
         }}
       ></div>
 
       {/* Gradient Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/20"></div>
 
       {/* Text Content */}
       <div className="relative z-20 mx-auto -mt-16 max-w-6xl text-center" style={{ marginTop: '120px' }}>
@@ -113,7 +113,8 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 300,
-                marginBottom: '0.25rem'
+                marginBottom: '0.25rem',
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -127,7 +128,8 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
               className="text-[2.25rem] sm:text-[2.75rem] md:text-6xl text-center text-white whitespace-nowrap"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
-                fontWeight: 700
+                fontWeight: 700,
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
