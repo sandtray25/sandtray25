@@ -327,7 +327,7 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
           {open ? (
             <IconX
               className={cn(
-                "dark:text-white",
+                "dark:text-white mr-2 cursor-pointer",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
@@ -339,7 +339,7 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
           ) : (
             <IconMenu2
               className={cn(
-                "dark:text-white",
+                "dark:text-white mr-2 cursor-pointer",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
