@@ -8,21 +8,16 @@
       "args": [
         "-y",
         "@supabase/mcp-server-supabase",
-        "--project-ref=YOUR_PROJECT_REF",
-        "--allow-writes",
-        "--allow-deletes",
-        "--allow-table-creation",
-        "--allow-schema-changes",
-        "--enable-sql-execution"
+        "--project-ref=yarakswvxhwlnomdmefr"
       ],
       "env": {
-        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN",
-        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF",
-        "SUPABASE_URL": "YOUR_SUPABASE_URL",
-        "SUPABASE_SERVICE_ROLE_KEY": "YOUR_SERVICE_ROLE_KEY",
+        "SUPABASE_ACCESS_TOKEN": "sbp_27b6d4e37e11f8c7d4707d86c6e90d634e66d08e",
+        "SUPABASE_PROJECT_REF": "yarakswvxhwlnomdmefr",
+        "SUPABASE_URL": "https://yarakswvxhwlnomdmefr.supabase.co",
+        "SUPABASE_SERVICE_ROLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhcmFrc3d2eGh3bG5vbWRtZWZyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODAwNTUwOCwiZXhwIjoyMDczNTgxNTA4fQ.9hLve1Y_345_s0s-9TgGZTH8eUxj9tqmbrL_oIh_1ug",
         "SUPABASE_DB_PASSWORD": "",
         "SUPABASE_ENABLE_RLS": "false",
-        "SUPABASE_ANON_KEY": "YOUR_ANON_KEY"
+        "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhcmFrc3d2eGh3bG5vbWRtZWZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMDU1MDgsImV4cCI6MjA3MzU4MTUwOH0.Ri1po1cZUMwC5IwBOtjfxtPcnyFcG3JCTyRIwljRVX0"
       }
     },
     "github": {

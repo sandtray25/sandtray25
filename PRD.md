@@ -627,17 +627,19 @@ supabase db reset
 
 ## 📊 분석 및 모니터링
 
-### 분석 도구 (향후 통합)
-- **Google Analytics 4**: 사용자 행동 분석
-- **Vercel Analytics**: 성능 모니터링
-- **Sentry**: 에러 트래킹
+### 분석 도구
+- ✅ **Vercel Web Analytics**: 사용자 행동 분석 및 페이지뷰 추적 (적용 완료)
+- ✅ **Vercel Speed Insights**: 실시간 성능 모니터링 (적용 완료)
+- **Google Analytics 4**: 상세한 사용자 행동 분석 (향후 추가 고려)
+- **Sentry**: 에러 트래킹 (향후 추가 고려)
 
 ### 주요 메트릭
-- 페이지뷰
-- 사용자 플로우
+- 페이지뷰 및 방문자 수
+- 실시간 Core Web Vitals (LCP, FID, CLS)
+- 사용자 플로우 및 이탈률
 - 자격증 신청 전환율
 - 교육 프로그램 신청 현황
-- 에러율
+- 페이지별 성능 점수
 
 ---
 
@@ -684,7 +686,9 @@ supabase db reset
 - [ ] 게시판 관리
 - [ ] 통계 리포트
 
-### Phase 7: 최적화 및 고도화 (예정)
+### Phase 7: 최적화 및 고도화 (진행 중)
+- [x] Vercel Web Analytics 적용
+- [x] Vercel Speed Insights 적용
 - [ ] 성능 최적화
 - [ ] SEO 최적화
 - [ ] 접근성 개선
