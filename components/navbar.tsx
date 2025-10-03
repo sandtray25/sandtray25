@@ -326,8 +326,9 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
           <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} />
           {open ? (
             <IconX
+              size={32}
               className={cn(
-                "dark:text-white mr-2 cursor-pointer",
+                "dark:text-white mr-6 cursor-pointer",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
@@ -338,8 +339,9 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
             />
           ) : (
             <IconMenu2
+              size={32}
               className={cn(
-                "dark:text-white mr-2 cursor-pointer",
+                "dark:text-white mr-6 cursor-pointer",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
