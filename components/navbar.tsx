@@ -150,9 +150,6 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
         stiffness: 200,
         damping: 50,
       }}
-      style={{
-        minWidth: "800px",
-      }}
       className={cn(
         "hidden lg:flex flex-row  self-start bg-transparent dark:bg-transparent items-center justify-between py-2 max-w-7xl mx-auto px-4 rounded-full relative z-[60] w-full",
         visible && "bg-white/80 dark:bg-neutral-950/80"
@@ -321,7 +318,7 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
           damping: 50,
         }}
         className={cn(
-          "flex relative flex-col lg:hidden w-full justify-between items-center bg-transparent   max-w-[calc(100vw-2rem)] mx-auto px-0 py-2 z-50",
+          "flex relative flex-col lg:hidden w-full justify-between items-center bg-transparent max-w-full mx-auto px-4 py-2 z-50",
           visible && "bg-white/80 dark:bg-neutral-950/80"
         )}
       >

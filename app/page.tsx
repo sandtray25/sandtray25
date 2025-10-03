@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative overflow-x-hidden w-full">
       <Hero playbackRate={0.85} />
       <div
         className="relative pt-[100px] md:pt-[50px]"

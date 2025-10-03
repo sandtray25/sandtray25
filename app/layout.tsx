@@ -26,7 +26,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={cn("antialiased dark:bg-black bg-white", inter.className)}
+        className={cn("antialiased dark:bg-black bg-white overflow-x-hidden", inter.className)}
       >
         <ThemeProvider
           attribute="class"
