@@ -16,14 +16,14 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       href="/"
       className={cn(
         "font-normal flex items-center gap-2 text-sm px-2 py-1 relative z-20",
-        visible ? "mr-16" : "mr-4"
+        visible ? "mr-16" : isMobile ? "mr-0" : "mr-4"
       )}
     >
       <Image
         src="/images/logo.png"
         alt="한국모래상자치료학회 로고"
-        width={50}
-        height={29}
+        width={isMobile ? 45 : 50}
+        height={isMobile ? 26 : 29}
         className="object-contain block"
         priority
       />
@@ -41,7 +41,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       {!visible && isMobile && (
         <span
           className={cn(
-            "text-base font-bold leading-none",
+            "text-lg font-bold leading-none flex items-center",
             isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
@@ -59,7 +59,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       )}
       {visible && isMobile && (
         <span
-          className="text-base font-bold text-black dark:text-white leading-none"
+          className="text-lg font-bold text-black dark:text-white leading-none flex items-center"
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
           한국모래상자치료학회
