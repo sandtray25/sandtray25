@@ -324,33 +324,48 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
       >
         <div className="flex flex-row justify-between items-center w-full">
           <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} />
-          {open ? (
-            <IconX
-              size={32}
+          <div className="flex items-center gap-2">
+            <span
               className={cn(
-                "dark:text-white mr-6 cursor-pointer",
+                "text-sm font-medium",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
-                    : "text-black"
-                  : "text-black"
+                    : "text-black dark:text-white"
+                  : "text-black dark:text-white"
               )}
-              onClick={() => setOpen(!open)}
-            />
-          ) : (
-            <IconMenu2
-              size={32}
-              className={cn(
-                "dark:text-white mr-6 cursor-pointer",
-                !visible
-                  ? isTestPage ? "text-white"
-                    : isMainPage ? "text-white"
+              style={{ fontFamily: 'GMarketSans, sans-serif', fontWeight: 500 }}
+            >
+              MENU
+            </span>
+            {open ? (
+              <IconX
+                size={32}
+                className={cn(
+                  "dark:text-white cursor-pointer",
+                  !visible
+                    ? isTestPage ? "text-white"
+                      : isMainPage ? "text-white"
+                      : "text-black"
                     : "text-black"
-                  : "text-black"
-              )}
-              onClick={() => setOpen(!open)}
-            />
-          )}
+                )}
+                onClick={() => setOpen(!open)}
+              />
+            ) : (
+              <IconMenu2
+                size={32}
+                className={cn(
+                  "dark:text-white cursor-pointer",
+                  !visible
+                    ? isTestPage ? "text-white"
+                      : isMainPage ? "text-white"
+                      : "text-black"
+                    : "text-black"
+                )}
+                onClick={() => setOpen(!open)}
+              />
+            )}
+          </div>
         </div>
 
         <AnimatePresence>

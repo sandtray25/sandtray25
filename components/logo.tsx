@@ -41,7 +41,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       {!visible && isMobile && (
         <span
           className={cn(
-            "text-lg font-bold leading-none flex items-center",
+            "text-lg font-bold leading-none flex items-end pb-1",
             isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
@@ -59,7 +59,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       )}
       {visible && isMobile && (
         <span
-          className="text-lg font-bold text-black dark:text-white leading-none flex items-center"
+          className="text-lg font-bold text-black dark:text-white leading-none flex items-end pb-1"
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
           한국모래상자치료학회
