@@ -1,4 +1,16 @@
+# 한국모래상자치료학회
+
 이 프로젝트는 [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)으로 부트스트랩된 [Next.js](https://nextjs.org/) 애플리케이션입니다.
+
+## 📚 문서
+
+모든 프로젝트 문서는 [`docs/`](./docs) 폴더에서 확인할 수 있습니다.
+
+- [📖 문서 목록](./docs/README.md) - 전체 문서 구조
+- [🚀 배포 가이드](./docs/guides/vercel-deployment.md)
+- [🗄️ 데이터베이스 스키마](./docs/database/schema.md)
+- [⚙️ Supabase MCP](./docs/guides/supabase-mcp.md)
+- [💻 개발 가이드](./docs/development/CLAUDE.md)
 
 ## 인프라 & 배포
 
