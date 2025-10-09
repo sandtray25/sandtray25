@@ -25,7 +25,7 @@ export default function SignupPage() {
   );
 }
 
-export function RegistrationFormWithImages() {
+function RegistrationFormWithImages() {
   return (
     <div
       className="min-h-screen w-full"
