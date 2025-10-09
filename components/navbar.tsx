@@ -323,11 +323,13 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
         )}
       >
         <div className="flex flex-row justify-between items-center w-full">
-          <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} />
-          <div className="flex items-center gap-2">
-            <span
+          <div className="flex items-center flex-1 min-w-0">
+            <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} />
+          </div>
+          <div className="flex items-center gap-2 mr-4 flex-shrink-0">
+            <motion.span
               className={cn(
-                "text-sm font-medium",
+                "text-[10px] font-medium",
                 !visible
                   ? isTestPage ? "text-white"
                     : isMainPage ? "text-white"
@@ -335,9 +337,17 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
                   : "text-black dark:text-white"
               )}
               style={{ fontFamily: 'GMarketSans, sans-serif', fontWeight: 500 }}
+              animate={{
+                opacity: visible ? 0 : 1,
+                scale: visible ? 0.8 : 1,
+              }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut"
+              }}
             >
               MENU
-            </span>
+            </motion.span>
             {open ? (
               <IconX
                 size={32}

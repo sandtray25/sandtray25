@@ -16,7 +16,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       href="/"
       className={cn(
         "font-normal flex items-center gap-2 text-sm px-2 py-1 relative z-20",
-        visible ? "mr-16" : isMobile ? "mr-0" : "mr-4"
+        visible ? "mr-16" : isMobile ? "mr-0 w-full" : "mr-4"
       )}
     >
       <Image
@@ -30,7 +30,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       {!visible && !isMobile && (
         <span
           className={cn(
-            "text-base font-bold leading-none",
+            "text-sm lg:text-base font-bold leading-none translate-y-0.5 whitespace-nowrap",
             isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
@@ -41,7 +41,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       {!visible && isMobile && (
         <span
           className={cn(
-            "text-lg font-bold leading-none flex items-end pb-1",
+            "text-base sm:text-lg md:text-xl font-bold leading-none self-center translate-y-0.5 whitespace-nowrap",
             isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
@@ -51,7 +51,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       )}
       {visible && !isMobile && (
         <span
-          className="text-base font-bold text-black dark:text-white leading-none"
+          className="text-xs lg:text-sm xl:text-base font-bold text-black dark:text-white leading-none translate-y-0.5 whitespace-nowrap"
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
           한국모래상자치료학회
@@ -59,7 +59,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
       )}
       {visible && isMobile && (
         <span
-          className="text-lg font-bold text-black dark:text-white leading-none flex items-end pb-1"
+          className="text-sm sm:text-base md:text-lg font-bold text-black dark:text-white leading-none self-center translate-y-0.5 whitespace-nowrap"
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
           한국모래상자치료학회

@@ -6,6 +6,7 @@ import { Spotlight } from "@/components/ui/spotlight-new";
 export function SpotlightPreview() {
   return (
     <motion.div
+      id="about-section"
       className="h-[12rem] md:h-[20rem] w-full rounded-md flex md:items-center md:justify-center antialiased relative overflow-hidden mt-10 mb-10"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

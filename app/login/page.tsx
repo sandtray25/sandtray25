@@ -14,13 +14,11 @@ export default function LoginPage() {
       className="min-h-screen"
       style={{
         background: `linear-gradient(135deg,
-          #e2e8f0 0%,
-          #f1f5f9 15%,
-          #f8f9fa 30%,
-          #fafafa 45%,
-          #f8f9fa 60%,
-          #f1f5f9 75%,
-          #cbd5e1 90%,
+          #fafafa 0%,
+          #f8f9fa 20%,
+          #f1f5f9 40%,
+          #e2e8f0 60%,
+          #cbd5e1 80%,
           #94a3b8 100%)`
       }}
     >
@@ -41,18 +39,18 @@ function LoginFormWithGradient() {
   };
   return (
     <Container className="py-10 md:py-20">
-      <div className="grid grid-cols-1 gap-10 px-4 md:grid-cols-2 md:px-8 lg:gap-40">
-        <div>
-          <Heading className="mt-4 text-left lg:text-4xl">로그인</Heading>
-          <SubHeading className="mt-4 max-w-xl text-left">
+      <div className="flex justify-center px-4 md:px-8">
+        <div className="w-full max-w-md">
+          <Heading className="mt-4 text-center lg:text-4xl">로그인</Heading>
+          <SubHeading className="mt-4 text-center">
             한국모래상자치료학회 서비스 이용을 위해 계정으로 로그인해 주세요.
           </SubHeading>
-          <form className="mt-6 flex flex-col gap-8" onSubmit={handleSubmit}>
+          <form className="mt-8 flex flex-col gap-6" onSubmit={handleSubmit}>
             <div className="h-full w-full rounded-2xl">
               <Label>이메일</Label>
               <CustomInput
                 type="email"
-                className="mt-4 border-none focus:ring-gray-300"
+                className="mt-2 border-none focus:ring-gray-300"
                 placeholder="you@example.com"
               />
             </div>
@@ -60,27 +58,21 @@ function LoginFormWithGradient() {
               <Label>비밀번호</Label>
               <CustomInput
                 type="password"
-                className="mt-4 border-none focus:ring-gray-300"
+                className="mt-2 border-none focus:ring-gray-300"
                 placeholder="비밀번호를 입력하세요"
               />
             </div>
-            <Button as="button" type="submit" variant="secondary">로그인</Button>
-            <div className="mt-2 flex items-center">
-              <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-700"></div>
-              <span className="px-4 text-sm text-gray-500 dark:text-neutral-400">
-                또는
-              </span>
-              <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-700"></div>
-            </div>
+            <Button as="button" type="submit" variant="dark" className="mt-2">
+              로그인
+            </Button>
           </form>
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <span className="text-sm text-gray-600">아직 계정이 없으신가요? </span>
             <Link href="/signup" className="text-sm font-medium text-orange-500 hover:underline">
               회원가입
             </Link>
           </div>
         </div>
-        <AuthIllustration />
       </div>
     </Container>
   );

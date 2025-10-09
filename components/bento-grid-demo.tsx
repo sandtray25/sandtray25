@@ -6,6 +6,7 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Button } from "@/components/button";
 import NoticeTableDemo from "@/components/notice-table";
 import GalleryCarousel from "@/components/gallery-carousel";
+import Link from "next/link";
 
 export function BentoGridDemo() {
   return (
@@ -52,15 +53,16 @@ const items = [
     ),
     className: "md:col-span-2 relative overflow-hidden bg-gradient-to-br from-amber-50/30 to-purple-50/30 border border-amber-100/30",
     action: (
-      <Button
-        as="a"
-        href="/about/greeting"
-        variant="primary"
-        className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
-        style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
-      >
-        알아보기
-      </Button>
+      <Link href="/about/greeting">
+        <Button
+          as="button"
+          variant="primary"
+          className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
+          style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+        >
+          알아보기
+        </Button>
+      </Link>
     ),
   },
   {
@@ -115,15 +117,16 @@ const items = [
     ),
     className: "md:col-span-1 bg-gradient-to-br from-amber-50/30 to-purple-50/30 border border-amber-100/30 relative overflow-hidden",
     action: (
-      <Button
-        as="a"
-        href="/certification/process"
-        variant="primary"
-        className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
-        style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
-      >
-        알아보기
-      </Button>
+      <Link href="/certification/process">
+        <Button
+          as="button"
+          variant="primary"
+          className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
+          style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+        >
+          알아보기
+        </Button>
+      </Link>
     ),
   },
   {
@@ -142,15 +145,16 @@ const items = [
     ),
     className: "md:col-span-2 relative overflow-hidden gallery-card bg-gradient-to-br from-amber-50/30 to-purple-50/30 border border-amber-100/30",
     action: (
-      <Button
-        as="a"
-        href="/community/gallery"
-        variant="primary"
-        className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
-        style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
-      >
-        더 보기
-      </Button>
+      <Link href="/about/history">
+        <Button
+          as="button"
+          variant="primary"
+          className="bg-white/90 hover:bg-white text-black text-xs md:text-sm px-2 md:px-3 py-1.5 md:py-2 hover:-translate-y-1 transition-all duration-200 shadow-lg"
+          style={{ fontFamily: 'Noto Sans KR, sans-serif' }}
+        >
+          더 보기
+        </Button>
+      </Link>
     ),
   },
 ];

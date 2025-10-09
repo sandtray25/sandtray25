@@ -1,9 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import Balancer from "react-wrap-balancer";
 
 interface HeroProps {
   playbackRate?: number;
@@ -12,7 +9,6 @@ interface HeroProps {
 export function Hero({ playbackRate = 1 }: HeroProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -43,11 +39,11 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
   }, [playbackRate]);
 
   return (
-    <div 
+    <div
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
-      style={{ 
-        backgroundColor: '#dab376',
-        background: 'linear-gradient(135deg, #dab376 0%, #e2c085 25%, #eac994 50%, #f2d2a3 75%, #fadbb2 100%)'
+      style={{
+        backgroundColor: '#000000',
+        background: '#000000'
       }}
     >
       {/* Background Video */}
@@ -58,7 +54,6 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
           width: '100vw',
           height: '100vh',
           objectFit: 'cover',
-          filter: 'blur(10px)',
           opacity: videoLoaded ? 1 : 0
         }}
         muted
@@ -67,53 +62,36 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
         autoPlay
         preload="auto"
       >
-        <source src="/images/b2_v.mp4" type="video/mp4" />
+        <source src="/images/b8_v.mp4" type="video/mp4" />
       </video>
 
-      {/* Gradient Background Layer */}
-      <div 
-        className="absolute inset-0 opacity-0"
-        style={{
-          background: `linear-gradient(135deg, 
-            #2d1f1a 0%, 
-            #3d2817 25%, 
-            #5c4033 50%, 
-            #7d5a4a 75%, 
-            #9d7c6a 100%)`
-        }}
-      />
-
-      {/* Black Opacity Overlay */}
-      <div className="absolute inset-0 bg-black/5"></div>
-
-      {/* Vignetting Effect */}
+      {/* Glass Effect Layer with Gradient - Top 80% */}
       <div
-        className="absolute inset-0"
+        className="absolute top-0 left-0 w-full h-[75%]"
         style={{
-          background: `radial-gradient(ellipse 80% 60% at center, transparent 20%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.5) 100%)`
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 95%, transparent 100%)',
+          backdropFilter: 'blur(50px)',
+          WebkitBackdropFilter: 'blur(50px)'
         }}
       ></div>
 
-      {/* Gradient Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/20"></div>
-
       {/* Text Content */}
-      <div className="relative z-20 mx-auto -mt-16 max-w-6xl text-center" style={{ marginTop: '120px' }}>
+      <div className="relative z-20 mx-auto max-w-6xl text-center mt-[-50px] md:mt-[-120px]">
         <div className="flex flex-col items-center gap-6">
           {/* 텍스트 영역 */}
           <motion.div
-            className="flex flex-col items-center gap-1 px-4"
+            className="flex flex-col items-center gap-0 md:gap-1 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
             {/* 첫 번째 줄 */}
             <motion.h3
-              className="text-[1.75rem] sm:text-[2.25rem] md:text-[2.5rem] text-center text-white whitespace-nowrap"
+              className="text-[1.75rem] sm:text-[2.25rem] md:text-[2.5rem] text-center whitespace-nowrap mb-0 md:mb-1"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 300,
-                marginBottom: '0.25rem',
+                color: '#E7E7E7',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
               }}
               initial={{ opacity: 0, y: 20 }}
@@ -125,10 +103,11 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
 
             {/* 두 번째 줄 */}
             <motion.h2
-              className="text-[2.25rem] sm:text-[2.75rem] md:text-6xl text-center text-white whitespace-nowrap"
+              className="text-[2.25rem] sm:text-[2.75rem] md:text-6xl text-center whitespace-nowrap"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 700,
+                color: '#FFFFFF',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
               }}
               initial={{ opacity: 0, y: 20 }}
@@ -140,10 +119,11 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
 
             {/* 설명 텍스트 */}
             <motion.p
-              className="text-lg sm:text-lg md:text-lg lg:text-xl font-medium text-center text-white/90 mt-16 sm:mt-12 max-w-2xl leading-relaxed sm:whitespace-nowrap"
+              className="text-lg sm:text-lg md:text-lg lg:text-xl font-medium text-center mt-6 sm:mt-8 max-w-2xl leading-relaxed sm:whitespace-nowrap"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 500,
+                color: '#CFCFCF',
                 textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)'
               }}
               initial={{ opacity: 0, y: 50 }}
@@ -153,33 +133,57 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
               마음의 치유와 성장을 위한<br className="sm:hidden" />
               전문 치료학회입니다
             </motion.p>
+
+            {/* 버튼 */}
+            <motion.button
+              className="mt-16 md:mt-12 px-6 py-2.5 text-white font-medium text-sm relative z-10 cursor-pointer"
+              style={{
+                fontFamily: 'GMarketSans, sans-serif',
+                position: 'relative',
+                background: 'rgba(255,255,255,0.21)',
+                borderRadius: '2rem',
+                border: '1px solid rgba(255,255,255,0.7)',
+                boxShadow: '0 8px 32px rgba(31,38,135,0.2), inset 0 4px 20px rgba(255,255,255,0.3)',
+                backdropFilter: 'blur(8px) saturate(170%)',
+                WebkitBackdropFilter: 'blur(8px) saturate(170%)',
+                overflow: 'hidden'
+              }}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{
+                scale: 0.95,
+                transition: { duration: 0.1 }
+              }}
+              onClick={() => {
+                const element = document.getElementById('about-section');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+            >
+              <span style={{ position: 'relative', zIndex: 1 }}>더 알아보기</span>
+              <div
+                style={{
+                  content: '',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'rgba(255,255,255,0.10)',
+                  borderRadius: '2rem',
+                  boxShadow: 'inset -10px -8px 0px -11px rgba(255,255,255,1), inset 0px -9px 0px -8px rgba(255,255,255,1)',
+                  opacity: 0.6,
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                  filter: 'blur(2px) brightness(1.07)'
+                }}
+              />
+            </motion.button>
           </motion.div>
 
-          {/* 버튼 영역 */}
-          <motion.div
-            className="flex flex-col md:flex-row gap-6 md:gap-4 mt-20 md:mt-16 px-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-          >
-            <motion.button
-              className="flex flex-row justify-center items-center px-6 py-3 rounded-full bg-white/80 backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => router.push('/training/instructor')}
-            >
-              <span className="text-black/100 font-normal text-base" style={{ fontFamily: 'GMarketSans, sans-serif' }}>교육 신청하기</span>
-            </motion.button>
-
-            <motion.button
-              className="flex flex-row justify-center items-center px-6 py-3 rounded-full border border-white/60 bg-white/10 backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => router.push('/resources/analyst')}
-            >
-              <span className="text-white/100 font-normal text-base" style={{ fontFamily: 'GMarketSans, sans-serif' }}>전문가 찾기</span>
-            </motion.button>
-          </motion.div>
         </div>
       </div>
     </div>
