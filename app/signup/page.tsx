@@ -7,6 +7,9 @@ import Script from "next/script";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
+// 동적 렌더링 강제 (Vercel 빌드 시 환경 변수 필요)
+export const dynamic = 'force-dynamic';
+
 declare global {
   interface Window {
     daum: any;
