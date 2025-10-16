@@ -8,7 +8,7 @@ interface HeroProps {
   videoSrc?: string;
 }
 
-export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/images/b6_v.mp4' }: HeroProps) {
+export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/images/b9_v.mp4' }: HeroProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
