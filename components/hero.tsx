@@ -4,11 +4,28 @@ import { motion } from "framer-motion";
 
 interface HeroProps {
   playbackRate?: number;
+  designVariant?: 'curved' | 'straight';
+  videoSrc?: string;
 }
 
-export function Hero({ playbackRate = 1 }: HeroProps) {
+export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/images/b6_v.mp4' }: HeroProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // 모바일 감지
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -16,16 +33,33 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
       const handleCanPlay = () => {
         setVideoLoaded(true);
         video.playbackRate = playbackRate;
-        video.play().catch(console.error);
+        video.play().catch((err) => {
+          console.log('Autoplay prevented, user interaction needed:', err);
+        });
       };
       
       const handleError = (e: Event) => {
-        console.error('Video loading error:', e);
+        const target = e.target as HTMLVideoElement;
+        const error = target.error;
+        
+        if (error) {
+          console.log('Video error details:', {
+            code: error.code,
+            message: error.message,
+            src: videoSrc
+          });
+        }
+        
         // 에러 발생 시에도 비디오를 표시하도록 설정
         setVideoLoaded(true);
       };
       
+      const handleLoadedData = () => {
+        setVideoLoaded(true);
+      };
+      
       video.addEventListener('canplay', handleCanPlay);
+      video.addEventListener('loadeddata', handleLoadedData);
       video.addEventListener('error', handleError);
       
       // Force load the video
@@ -33,10 +67,11 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
       
       return () => {
         video.removeEventListener('canplay', handleCanPlay);
+        video.removeEventListener('loadeddata', handleLoadedData);
         video.removeEventListener('error', handleError);
       };
     }
-  }, [playbackRate]);
+  }, [playbackRate, videoSrc]);
 
   return (
     <div
@@ -61,17 +96,44 @@ export function Hero({ playbackRate = 1 }: HeroProps) {
         playsInline
         autoPlay
         preload="auto"
+        crossOrigin="anonymous"
       >
-        <source src="/images/b8_v.mp4" type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
 
-      {/* Glass Effect Layer with Gradient - Top 80% */}
+      {/* SVG Mask for Curved Effect */}
+      {designVariant === 'curved' && (
+        <svg width="0" height="0" style={{ position: 'absolute' }}>
+          <defs>
+            {/* 데스크탑용 곡선 */}
+            <clipPath id="curvedMaskDesktop" clipPathUnits="objectBoundingBox">
+              <path d="
+                M 0,0 L 1,0 L 1,0.78
+                A 0.55,0.30 0 0 1 0,0.78
+                Z" />
+            </clipPath>
+            {/* 모바일용 곡선 (더 완만함) */}
+            <clipPath id="curvedMaskMobile" clipPathUnits="objectBoundingBox">
+              <path d="
+                M 0,0 L 1,0 L 1,0.90
+                A 0.55,0.12 0 0 1 0,0.90
+                Z" />
+            </clipPath>
+          </defs>
+        </svg>
+      )}
+
+      {/* Glass Effect Layer with Gradient */}
       <div
-        className="absolute top-0 left-0 w-full h-[75%]"
+        className="absolute top-0 left-0 w-full h-[80%]"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 95%, transparent 100%)',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 95%, transparent 100%)',
           backdropFilter: 'blur(50px)',
-          WebkitBackdropFilter: 'blur(50px)'
+          WebkitBackdropFilter: 'blur(50px)',
+          ...(designVariant === 'curved' ? { 
+            clipPath: isMobile ? 'url(#curvedMaskMobile)' : 'url(#curvedMaskDesktop)' 
+          } : {})
         }}
       ></div>
 

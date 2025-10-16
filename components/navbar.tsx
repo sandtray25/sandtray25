@@ -29,12 +29,14 @@ interface NavbarProps {
   visible: boolean;
   isMainPage: boolean;
   isTestPage?: boolean;
+  isDesignPage?: boolean;
 }
 
 export const Navbar = () => {
   const pathname = usePathname();
   const isMainPage = pathname === '/';
   const isTestPage = pathname === '/test';
+  const isDesignPage = pathname.startsWith('/design');
 
   const navItems = [
     {
@@ -111,13 +113,13 @@ export const Navbar = () => {
 
   return (
     <motion.div ref={ref} className="w-full fixed top-0 inset-x-0 z-50">
-      <DesktopNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} />
-      <MobileNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} />
+      <DesktopNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
+      <MobileNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
     </motion.div>
   );
 };
 
-const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) => {
+const DesktopNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }: NavbarProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -155,7 +157,7 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
         visible && "bg-white/80 dark:bg-neutral-950/80"
       )}
     >
-      <Logo visible={visible} isMainPage={isMainPage} isTestPage={isTestPage} />
+      <Logo visible={visible} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
       <div className={cn(
         "lg:flex flex-row flex-1 absolute inset-0 hidden items-center justify-center",
         visible ? "space-x-1 ml-24" : "space-x-1"
@@ -181,11 +183,13 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
                   "relative px-4 py-2 text-base font-medium transition duration-200 cursor-pointer",
                   visible
                     ? "text-neutral-600 dark:text-neutral-300 hover:text-zinc-800"
-                    : isTestPage
+                    : isDesignPage
                       ? "text-white hover:text-gray-200"
-                      : isMainPage
+                      : isTestPage
                         ? "text-white hover:text-gray-200"
-                        : "text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+                        : isMainPage
+                          ? "text-white hover:text-gray-200"
+                          : "text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 )}
               >
                 <span className="relative z-20">{navItem.name}</span>
@@ -196,11 +200,13 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
                   "relative px-4 py-2 text-base font-medium transition duration-200",
                   visible
                     ? "text-neutral-600 dark:text-neutral-300 hover:text-zinc-800"
-                    : isTestPage
+                    : isDesignPage
                       ? "text-white hover:text-gray-200"
-                      : isMainPage
+                      : isTestPage
                         ? "text-white hover:text-gray-200"
-                        : "text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+                        : isMainPage
+                          ? "text-white hover:text-gray-200"
+                          : "text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 )}
                 href={navItem.link}
               >
@@ -252,16 +258,18 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
           variant="secondary"
           className={cn(
             "hidden md:block px-3 py-2",
+            !visible && isDesignPage && "text-white hover:text-gray-200",
             !visible && isTestPage && "text-white hover:text-gray-200",
             !visible && isMainPage && "text-white hover:text-gray-200",
-            !visible && !isMainPage && !isTestPage && "text-black hover:text-gray-600"
+            !visible && !isMainPage && !isTestPage && !isDesignPage && "text-black hover:text-gray-600"
           )}
         >
           <IconUser size={18} className={
             !visible
-              ? isTestPage ? "text-white"
-                : isMainPage ? "text-white"
-                : "text-black"
+              ? isDesignPage ? "text-white"
+                : isTestPage ? "text-white"
+                  : isMainPage ? "text-white"
+                  : "text-black"
               : ""
           } />
         </Button>
@@ -271,9 +279,10 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
           variant="primary"
           className={cn(
             "hidden md:block px-4 py-2",
+            !visible && isDesignPage && "text-black border-white hover:text-gray-800 hover:border-gray-200 bg-white",
             !visible && isTestPage && "text-black border-white hover:text-gray-800 hover:border-gray-200 bg-white",
             !visible && isMainPage && "text-black border-white hover:text-gray-800 hover:border-gray-200 bg-white",
-            !visible && !isMainPage && !isTestPage && "text-white bg-black border-black hover:text-gray-200 hover:bg-gray-800"
+            !visible && !isMainPage && !isTestPage && !isDesignPage && "text-white bg-black border-black hover:text-gray-200 hover:bg-gray-800"
           )}
         >
           로그인
@@ -283,7 +292,7 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) 
   );
 };
 
-const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) => {
+const MobileNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
@@ -324,16 +333,17 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
       >
         <div className="flex flex-row justify-between items-center w-full">
           <div className="flex items-center flex-1 min-w-0">
-            <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} />
+            <Logo visible={visible} isMobile={true} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
           </div>
           <div className="flex items-center gap-2 mr-4 flex-shrink-0">
             <motion.span
               className={cn(
                 "text-[10px] font-medium",
                 !visible
-                  ? isTestPage ? "text-white"
-                    : isMainPage ? "text-white"
-                    : "text-black dark:text-white"
+                  ? isDesignPage ? "text-white"
+                    : isTestPage ? "text-white"
+                      : isMainPage ? "text-white"
+                      : "text-black dark:text-white"
                   : "text-black dark:text-white"
               )}
               style={{ fontFamily: 'GMarketSans, sans-serif', fontWeight: 500 }}
@@ -354,9 +364,10 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
                 className={cn(
                   "dark:text-white cursor-pointer",
                   !visible
-                    ? isTestPage ? "text-white"
-                      : isMainPage ? "text-white"
-                      : "text-black"
+                    ? isDesignPage ? "text-white"
+                      : isTestPage ? "text-white"
+                        : isMainPage ? "text-white"
+                        : "text-black"
                     : "text-black"
                 )}
                 onClick={() => setOpen(!open)}
@@ -367,9 +378,10 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage }: NavbarProps) =
                 className={cn(
                   "dark:text-white cursor-pointer",
                   !visible
-                    ? isTestPage ? "text-white"
-                      : isMainPage ? "text-white"
-                      : "text-black"
+                    ? isDesignPage ? "text-white"
+                      : isTestPage ? "text-white"
+                        : isMainPage ? "text-white"
+                        : "text-black"
                     : "text-black"
                 )}
                 onClick={() => setOpen(!open)}

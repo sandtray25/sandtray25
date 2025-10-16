@@ -8,9 +8,10 @@ interface LogoProps {
   isMobile?: boolean;
   isMainPage?: boolean;
   isTestPage?: boolean;
+  isDesignPage?: boolean;
 }
 
-export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isTestPage = false }: LogoProps) => {
+export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isTestPage = false, isDesignPage = false }: LogoProps) => {
   return (
     <Link
       href="/"
@@ -31,7 +32,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
         <span
           className={cn(
             "text-sm lg:text-base font-bold leading-none translate-y-0.5 whitespace-nowrap",
-            isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
+            isDesignPage ? "text-white" : isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
@@ -42,7 +43,7 @@ export const Logo = ({ visible = false, isMobile = false, isMainPage = true, isT
         <span
           className={cn(
             "text-base sm:text-lg md:text-xl font-bold leading-none self-center translate-y-0.5 whitespace-nowrap",
-            isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
+            isDesignPage ? "text-white" : isTestPage ? "text-white" : isMainPage ? "text-white" : "text-black dark:text-white"
           )}
           style={{ fontFamily: 'Pretendard, sans-serif', fontWeight: 700 }}
         >
