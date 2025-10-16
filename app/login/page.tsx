@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/button";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   return (
@@ -32,11 +33,40 @@ export default function LoginPage() {
 
 function LoginFormWithGradient() {
   const router = useRouter();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const supabase = createClient();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: 인증 연동 시 교체. 현재는 마이페이지로 이동.
-    router.push("/mypage");
+    setError(null);
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+        return;
+      }
+
+      if (data?.session) {
+        // 로그인 성공
+        router.push("/mypage");
+        router.refresh(); // 페이지 새로고침하여 네비게이션 바 업데이트
+      }
+    } catch (err) {
+      setError("로그인 중 오류가 발생했습니다.");
+      setLoading(false);
+    }
   };
+
   return (
     <Container className="py-10 md:py-20">
       <div className="flex justify-center px-4 md:px-8">
@@ -46,12 +76,20 @@ function LoginFormWithGradient() {
             한국모래상자치료학회 서비스 이용을 위해 계정으로 로그인해 주세요.
           </SubHeading>
           <form className="mt-8 flex flex-col gap-6" onSubmit={handleSubmit}>
+            {error && (
+              <div className="rounded-md bg-red-50 p-3 text-sm text-red-800">
+                {error}
+              </div>
+            )}
             <div className="h-full w-full rounded-2xl">
               <Label>이메일</Label>
               <CustomInput
                 type="email"
                 className="mt-2 border-none focus:ring-gray-300"
                 placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="h-full w-full rounded-2xl">
@@ -60,10 +98,19 @@ function LoginFormWithGradient() {
                 type="password"
                 className="mt-2 border-none focus:ring-gray-300"
                 placeholder="비밀번호를 입력하세요"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
-            <Button as="button" type="submit" variant="dark" className="mt-2">
-              로그인
+            <Button 
+              as="button" 
+              type="submit" 
+              variant="dark" 
+              className="mt-2"
+              disabled={loading}
+            >
+              {loading ? "로그인 중..." : "로그인"}
             </Button>
           </form>
           <div className="mt-8 text-center">

@@ -1,5 +1,6 @@
 export const CONSTANTS = {
   LOGIN_LINK: "/login",
+  MYPAGE_LINK: "/mypage",
   CALCOM_NAMESPACE: "chat-with-manu-demo",
   CALCOM_BRAND_COLOR: "#000000",
   CALCOM_HIDE_EVENT_TYPE_DETAILS: false,

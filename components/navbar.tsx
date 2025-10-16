@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { IconMenu2, IconX, IconChevronRight as ChevronRight, IconUser } from "@tabler/icons-react";
+import { IconMenu2, IconX, IconChevronRight as ChevronRight } from "@tabler/icons-react";
 import {
   motion,
   AnimatePresence,
@@ -9,12 +9,13 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button } from "./button";
 import { Logo } from "./logo";
 import { ModeToggle } from "./mode-toggle";
 import { useCalEmbed } from "@/app/hooks/useCalEmbed";
 import { CONSTANTS } from "@/constants/links";
+import { createClient } from "@/lib/supabase/client";
 
 interface NavbarProps {
   navItems: {
@@ -30,6 +31,7 @@ interface NavbarProps {
   isMainPage: boolean;
   isTestPage?: boolean;
   isDesignPage?: boolean;
+  isLoggedIn?: boolean;
 }
 
 export const Navbar = () => {
@@ -37,6 +39,26 @@ export const Navbar = () => {
   const isMainPage = pathname === '/';
   const isTestPage = pathname === '/test';
   const isDesignPage = pathname.startsWith('/design');
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    // 현재 세션 확인
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsLoggedIn(!!session);
+    };
+
+    checkSession();
+
+    // 세션 변경 감지
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const navItems = [
     {
@@ -113,13 +135,13 @@ export const Navbar = () => {
 
   return (
     <motion.div ref={ref} className="w-full fixed top-0 inset-x-0 z-50">
-      <DesktopNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
-      <MobileNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} />
+      <DesktopNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} isLoggedIn={isLoggedIn} />
+      <MobileNav visible={visible} navItems={navItems} isMainPage={isMainPage} isTestPage={isTestPage} isDesignPage={isDesignPage} isLoggedIn={isLoggedIn} />
     </motion.div>
   );
 };
 
-const DesktopNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }: NavbarProps) => {
+const DesktopNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage, isLoggedIn }: NavbarProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -254,28 +276,7 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }:
       <div className="flex items-center gap-4">
         <Button
           as={Link}
-          href={CONSTANTS.LOGIN_LINK}
-          variant="secondary"
-          className={cn(
-            "hidden md:block px-3 py-2",
-            !visible && isDesignPage && "text-white hover:text-gray-200",
-            !visible && isTestPage && "text-white hover:text-gray-200",
-            !visible && isMainPage && "text-white hover:text-gray-200",
-            !visible && !isMainPage && !isTestPage && !isDesignPage && "text-black hover:text-gray-600"
-          )}
-        >
-          <IconUser size={18} className={
-            !visible
-              ? isDesignPage ? "text-white"
-                : isTestPage ? "text-white"
-                  : isMainPage ? "text-white"
-                  : "text-black"
-              : ""
-          } />
-        </Button>
-        <Button
-          as={Link}
-          href={CONSTANTS.LOGIN_LINK}
+          href={isLoggedIn ? CONSTANTS.MYPAGE_LINK : CONSTANTS.LOGIN_LINK}
           variant="primary"
           className={cn(
             "hidden md:block px-4 py-2",
@@ -285,14 +286,14 @@ const DesktopNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }:
             !visible && !isMainPage && !isTestPage && !isDesignPage && "text-white bg-black border-black hover:text-gray-200 hover:bg-gray-800"
           )}
         >
-          로그인
+          {isLoggedIn ? "마이페이지" : "로그인"}
         </Button>
       </div>
     </motion.div>
   );
 };
 
-const MobileNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }: NavbarProps) => {
+const MobileNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage, isLoggedIn }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
@@ -471,20 +472,11 @@ const MobileNav = ({ navItems, visible, isMainPage, isTestPage, isDesignPage }: 
               <Button
                 as={Link}
                 onClick={() => setOpen(false)}
-                href={CONSTANTS.LOGIN_LINK}
+                href={isLoggedIn ? CONSTANTS.MYPAGE_LINK : CONSTANTS.LOGIN_LINK}
                 variant="primary"
                 className="block md:hidden w-full"
               >
-                마이페이지
-              </Button>
-              <Button
-                as={Link}
-                onClick={() => setOpen(false)}
-                href={CONSTANTS.LOGIN_LINK}
-                variant="primary"
-                className="block md:hidden w-full"
-              >
-                로그인
+                {isLoggedIn ? "마이페이지" : "로그인"}
               </Button>
             </motion.div>
           )}
