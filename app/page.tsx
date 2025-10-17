@@ -15,15 +15,8 @@ export default function Home() {
       <div
         className="relative pt-[100px] md:pt-[50px]"
         style={{
-          background: `linear-gradient(180deg,
-            #ffffff 0%,
-            #f9f7f0 15%,
-            #f4f2e8 25%,
-            #f0eddf 35%,
-            #e5e0d3 50%,
-            #dcd7ca 65%,
-            #d3cdc0 80%,
-            #c9c1b0 100%)`
+          background: `linear-gradient(to bottom, #FFFFFF, #ECE9E6)`,
+          backgroundColor: '#ECE9E6'
         }}
       >
         <SpotlightPreview />
