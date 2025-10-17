@@ -71,7 +71,7 @@ export const noticeColumns: ColumnDef<Notice>[] = [
               중요
             </span>
           )}
-          <span className="text-sm truncate">{title}</span>
+          <span className="text-sm truncate text-neutral-800 dark:text-neutral-200">{title}</span>
         </div>
       )
     },
@@ -86,7 +86,7 @@ export const noticeColumns: ColumnDef<Notice>[] = [
         day: "numeric",
       })
       
-      return <div className="text-xs text-muted-foreground">{formatted}</div>
+      return <div className="text-xs text-neutral-600 dark:text-neutral-400">{formatted}</div>
     },
   },
 ]
@@ -114,7 +114,7 @@ function NoticeTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="h-8 px-2 text-xs font-semibold">
+                  <TableHead key={header.id} className="h-8 px-2 text-xs font-semibold text-neutral-700 dark:text-neutral-300">
                     {header.isPlaceholder
                       ? null
                       : flexRender(

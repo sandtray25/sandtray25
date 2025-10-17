@@ -73,15 +73,15 @@ const items = [
         <div
           className="absolute inset-0 rounded-xl"
           style={{
-            background: 'linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%)',
+            background: 'linear-gradient(135deg, rgba(251, 243, 219, 0.95) 0%, rgba(243, 232, 255, 0.95) 100%)',
             backdropFilter: 'blur(8px)'
           }}
         ></div>
         <div className="relative z-10 flex flex-col h-full p-4">
           <div className="mb-3 flex-shrink-0">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <h3 className="font-bold text-base md:text-lg lg:text-xl text-gray-800" style={{
+              <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+              <h3 className="font-bold text-base md:text-lg lg:text-xl text-neutral-800" style={{
                 fontFamily: 'Noto Sans KR, sans-serif',
                 fontWeight: 700
               }}>
@@ -95,7 +95,7 @@ const items = [
         </div>
       </div>
     ),
-    className: "md:col-span-1 relative overflow-hidden bg-white/80 backdrop-blur-sm border border-gray-200/60 shadow-md hover:shadow-lg transition-all duration-300",
+    className: "md:col-span-1 relative overflow-hidden bg-gradient-to-br from-amber-50/40 to-purple-50/40 border border-amber-100/50 shadow-md hover:shadow-lg transition-all duration-300",
   },
   {
     title: "자격증 정보",

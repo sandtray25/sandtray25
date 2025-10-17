@@ -1,9 +1,40 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Logo } from "./logo";
+import { createClient } from "@/lib/supabase/client";
+import { isAdminEmail } from "@/lib/auth/admin";
 
 export function Footer() {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        setIsAdmin(isAdminEmail(user.email));
+      } else {
+        setIsAdmin(false);
+      }
+    };
+
+    checkAdmin();
+
+    // 세션 변경 감지
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setIsAdmin(isAdminEmail(session.user.email));
+      } else {
+        setIsAdmin(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   const pages = [
     {
       title: "학회소개",
@@ -120,6 +151,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              {isAdmin && (
+                <li className="list-none">
+                  <Link
+                    className="transition-colors hover:text-text-neutral-800 font-semibold text-orange-600 dark:text-orange-400"
+                    href="/admin"
+                  >
+                    관리페이지
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

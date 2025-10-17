@@ -39,9 +39,16 @@ export const Navbar = () => {
   const isMainPage = pathname === '/';
   const isTestPage = pathname === '/test';
   const isDesignPage = pathname.startsWith('/design');
+  const isAdminPage = pathname.startsWith('/admin');
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
   const supabase = createClient();
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
   useEffect(() => {
     // 현재 세션 확인
@@ -59,6 +66,19 @@ export const Navbar = () => {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 100) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  });
+
+  // admin 페이지에서는 네비게이션 바를 표시하지 않음
+  if (isAdminPage) {
+    return <div ref={ref} />;
+  }
 
   const navItems = [
     {
@@ -117,21 +137,6 @@ export const Navbar = () => {
       ],
     },
   ];
-
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const [visible, setVisible] = useState<boolean>(false);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  });
 
   return (
     <motion.div ref={ref} className="w-full fixed top-0 inset-x-0 z-50">

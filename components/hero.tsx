@@ -149,7 +149,7 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
           >
             {/* 첫 번째 줄 */}
             <motion.h3
-              className="text-[1.75rem] sm:text-[2.25rem] md:text-[2.5rem] text-center whitespace-nowrap mb-0 md:mb-1"
+              className="text-[1.5rem] sm:text-[2.25rem] md:text-[2.5rem] text-center sm:whitespace-nowrap mb-0 md:mb-1 px-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 300,
@@ -165,7 +165,7 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
 
             {/* 두 번째 줄 */}
             <motion.h2
-              className="text-[2.25rem] sm:text-[2.75rem] md:text-6xl text-center whitespace-nowrap"
+              className="text-[1.85rem] sm:text-[2.75rem] md:text-6xl text-center sm:whitespace-nowrap px-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 700,
@@ -181,7 +181,7 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
 
             {/* 설명 텍스트 */}
             <motion.p
-              className="text-lg sm:text-lg md:text-lg lg:text-xl font-medium text-center mt-6 sm:mt-8 max-w-2xl leading-relaxed sm:whitespace-nowrap"
+              className="text-base sm:text-lg md:text-lg lg:text-xl font-medium text-center mt-6 sm:mt-8 max-w-2xl leading-relaxed sm:whitespace-nowrap mb-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 500,
@@ -192,13 +192,12 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              마음의 치유와 성장을 위한<br className="sm:hidden" />
-              전문 치료학회입니다
+              마음의 치유와 성장을 위한<br className="sm:hidden" /> 전문 치료학회입니다
             </motion.p>
 
             {/* 버튼 */}
             <motion.button
-              className="mt-16 md:mt-12 px-6 py-2.5 text-white font-medium text-sm relative z-10 cursor-pointer"
+              className="mt-12 md:mt-12 px-6 py-2.5 text-white font-medium text-sm relative z-10 cursor-pointer"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 position: 'relative',

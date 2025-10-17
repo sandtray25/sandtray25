@@ -107,7 +107,7 @@ export default function NumberStats() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* 제목 */}
         <motion.h1
-          className="text-4xl md:text-6xl text-center mb-30 relative z-20 mt-16 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-600 bg-opacity-50"
+          className="text-3xl md:text-6xl text-center mb-30 relative z-20 mt-16 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-600 bg-opacity-50"
           style={{ fontFamily: 'GMarketSans, sans-serif', fontWeight: 500 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
