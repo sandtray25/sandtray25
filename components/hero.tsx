@@ -142,14 +142,14 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
         <div className="flex flex-col items-center gap-6">
           {/* 텍스트 영역 */}
           <motion.div
-            className="flex flex-col items-center gap-0 md:gap-1 px-4"
+            className="flex flex-col items-center gap-0 md:gap-1 px-2 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
             {/* 첫 번째 줄 */}
             <motion.h3
-              className="text-[1.5rem] sm:text-[2.25rem] md:text-[2.5rem] text-center sm:whitespace-nowrap mb-0 md:mb-1 px-4"
+              className="text-[1.75rem] sm:text-[2.25rem] md:text-[2.5rem] text-center sm:whitespace-nowrap mb-0 md:mb-1 px-1 md:px-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 300,
@@ -165,7 +165,7 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
 
             {/* 두 번째 줄 */}
             <motion.h2
-              className="text-[1.85rem] sm:text-[2.75rem] md:text-6xl text-center sm:whitespace-nowrap px-4"
+              className="text-[2.1rem] sm:text-[2.75rem] md:text-6xl text-center sm:whitespace-nowrap px-1 md:px-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 700,
@@ -181,7 +181,7 @@ export function Hero({ playbackRate = 1, designVariant = 'curved', videoSrc = '/
 
             {/* 설명 텍스트 */}
             <motion.p
-              className="text-base sm:text-lg md:text-lg lg:text-xl font-medium text-center mt-6 sm:mt-8 max-w-2xl leading-relaxed sm:whitespace-nowrap mb-4"
+              className="text-base sm:text-lg md:text-lg lg:text-xl font-medium text-center mt-6 sm:mt-8 max-w-2xl leading-relaxed sm:whitespace-nowrap mb-4 px-1 md:px-4"
               style={{
                 fontFamily: 'GMarketSans, sans-serif',
                 fontWeight: 500,
